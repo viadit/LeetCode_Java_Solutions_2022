@@ -1,19 +1,21 @@
 class Solution {
     public void reverseString(char[] s) {
-        int low = 0;
-        int high = s.length - 1;
-        solve(s, low, high);
-    }
-    
-    public void solve(char[] s, int low, int high) {
-        if (low >= high) {
-            return;
+        Stack<Character> stack = new Stack<>();
+        String str = new String(s);
+        
+        for (int i = 0; i < s.length; i++) {
+            stack.push(s[i]);
         }
         
-        char temp = s[low];
-        s[low] = s[high];
-        s[high] = temp;
+        char[] ans = new char[s.length];
+        int i = 0;
         
-        solve(s, ++low, --high);
+        while (stack.size() > 0) {
+            s[i++] = stack.pop();
+        }
+        
+        for (int j = 0; j < str.length(); j++) {
+            ans[j] = str.charAt(j);
+        }
     }
 }
